@@ -1,103 +1,39 @@
-//#define NDEBUG
 #include <iostream>
-#include <time.h>
-#include <stdlib.h>
-#include <cassert>
 
 using namespace std;
 
-void StartStatement();
-void GameParmInput();
-void RunGuesses(int rand_num_, int guesses_);
-void RunAgain();
+void example(int& apple, int ball, int cat)
+{
+	cout << "In example function" << endl;
+	cout << "a = " << apple << endl;
+	cout << "b = " << ball << endl;
+	cout << "c = " << cat << endl;
 
-bool again;
+	apple = ball + cat;
+	ball = apple + cat;
+	cat = apple + ball;
+
+	cout << "After changing values" << endl;
+	cout << "a = " << apple << endl;
+	cout << "b = " << ball << endl;
+	cout << "c = " << cat << endl;
+}
 
 int main()
 {
-	cout << "Welcome to the number guessing program!\n\n";
-	cout << "For this program you will try to guess the number that I (the computer) come up with.\n";
+	int a = 10;
+	int b = 20;
+	int c = 30;
 
-	do
-	{
-		StartStatement();
-		GameParmInput();
-		RunAgain();
-	} while (again);
+	cout << "In main function" << endl;
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	cout << "c = " << c << endl;
 
-	return 0;
-}
+	example(a, b, c);
 
-void StartStatement()
-{
-	cout << "You will need to tell me which numbers you want to guess between and ";
-	cout << "how many guesses you would like.\n";
-}
-
-void GameParmInput()
-{
-	int lower_bound;
-	int upper_bound;
-	int guesses;
-
-	cout << "What is the lower bound of possible random numbers? ";
-	cin >> lower_bound;
-
-	cout << "\nWhat is the upper bound of possible random numbers? ";
-	cin >> upper_bound;
-
-	cout << "\nHow many guesses would you like? ";
-	cin >> guesses;
-
-	srand(time(NULL));
-	int rand_num = rand() % upper_bound + lower_bound;
-
-	assert(cin);
-
-	RunGuesses(rand_num, guesses);
-}
-
-void RunGuesses(int rand_num_, int guesses_)
-{
-	for (int i = 0; i < guesses_; i++)
-	{
-		int guess;
-		cout << "Guess number " << i + 1 << ". What is your guess? ";
-		cin >> guess;
-
-		if (guess == rand_num_)
-		{
-			cout << "\n\nCongrats! You guessed the number.\n\n";
-			i = guesses_;
-		}
-		else
-		{
-			cout << "\nWrong!\n";
-
-			if (i == guesses_ - 1)
-			{
-				cout << "The number is: " << rand_num_ << endl;
-			}
-		}
-	}
-}
-
-void RunAgain()
-{
-	int again_input;
-	cout << "Would you like to play again? Enter 1 for yes and 2 for no: ";
-	cin >> again_input;
-
-	switch (again_input)
-	{
-	case 1:	again = true;
-		break;
-
-	case 2:	again = false;
-		break;
-
-	default: cout << "Input error! Exiting program.\n\n";
-		again = false;
-		break;
-	}
+	cout << "After calling example function" << endl;
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	cout << "c = " << c << endl;
 }
