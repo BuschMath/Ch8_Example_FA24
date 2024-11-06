@@ -2,38 +2,31 @@
 
 using namespace std;
 
-void example(int& apple, int ball, int cat)
+void function(int a, int b, int& c)
 {
-	cout << "In example function" << endl;
-	cout << "a = " << apple << endl;
-	cout << "b = " << ball << endl;
-	cout << "c = " << cat << endl;
-
-	apple = ball + cat;
-	ball = apple + cat;
-	cat = apple + ball;
-
-	cout << "After changing values" << endl;
-	cout << "a = " << apple << endl;
-	cout << "b = " << ball << endl;
-	cout << "c = " << cat << endl;
+	a++;
+	b++;
+	c++;
+	cout << "a = " << a << endl;
+	cout << "b = " << b << endl;
+	cout << "c = " << c << endl;
 }
 
 int main()
 {
-	int a = 10;
-	int b = 20;
-	int c = 30;
+	int a = 1, b = 2, c = 3;
 
-	cout << "In main function" << endl;
 	cout << "a = " << a << endl;
 	cout << "b = " << b << endl;
 	cout << "c = " << c << endl;
 
-	example(a, b, c);
+	function(a, b, c);
 
-	cout << "After calling example function" << endl;
 	cout << "a = " << a << endl;
-	cout << "b = " << b << endl;
+	cout << "b = " << b << endl;	
 	cout << "c = " << c << endl;
+
+	cout << "&a = " << &a << endl;
+
+	return 0;
 }
